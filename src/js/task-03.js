@@ -24,23 +24,30 @@ const images = [
 ];
 
 const galleryGridEl = document.querySelector("ul.gallery");
-galleryGridEl.style.backgroundColor = "teal";
-galleryGridEl.style.display = "flex";
-galleryGridEl.style.gap = "10px";
-galleryGridEl.style.justifyContent = "center";
-galleryGridEl.style.listStyle= "none";
+// galleryGridEl.style.backgroundColor = "teal";
+// galleryGridEl.style.padding = "15px";
+// galleryGridEl.style.display = "flex";
+// galleryGridEl.style.gap = "10px";
+// galleryGridEl.style.justifyContent = "center";
+// galleryGridEl.style.listStyle= "none";
 
-console.log(galleryGridEl.style);
-console.dir(galleryGridEl);
+// console.log(galleryGridEl.style);
+// console.dir(galleryGridEl);
 const makeGalleryItemMarkup = ({ url, alt }) => {
-  return `<li><img src="${url}" alt="${alt}" height="200px"></li>`;
+  return `<li class="item"><img src="${url}" alt="${alt}" height="200px"></li>`;
 };
 // console.log(makeGalleryItemMarkup(images[0]));
 const makeGalleryItemsSetMarkup = images.map(makeGalleryItemMarkup).join("");
-console.log(makeGalleryItemsSetMarkup);
-galleryGridEl.insertAdjacentHTML("beforeend",makeGalleryItemsSetMarkup)
-const galleryGridItemEl = document.querySelector("ul.gallery li");
-galleryGridItemEl.style.width="300px";
-galleryGridItemEl.style.overflow="hidden";
-console.log(galleryGridItemEl.style);
-
+// console.log(makeGalleryItemsSetMarkup);
+galleryGridEl.insertAdjacentHTML("beforeend",makeGalleryItemsSetMarkup);
+// const galleryGridItemEl = document.querySelector(".item");
+// galleryGridItemEl.style.width="300px";
+// galleryGridItemEl.style.overflow="hidden";
+// console.log(galleryGridItemEl.style);
+const styles=`<style>
+  body {
+    color:red;
+    background-color: teal;
+  }
+</style>`
+galleryGridEl.insertAdjacentHTML("beforebegin",styles);
