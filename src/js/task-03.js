@@ -26,13 +26,14 @@ const images = [
 const galleryGridEl = document.querySelector("ul.gallery");
 galleryGridEl.classList.add("list");
 
-const makeGalleryItemMarkup = ({ url, alt }) =>`<li class="item"><img src="${url}" alt="${alt}" ></li>`;
+const makeGalleryItemMarkup = ({ url, alt }) =>
+  `<li class="item"><img src="${url}" alt="${alt}" ></li>`;
 
 const makeGalleryItemsSetMarkup = images.map(makeGalleryItemMarkup).join("");
 
-galleryGridEl.insertAdjacentHTML("beforeend",makeGalleryItemsSetMarkup);
+galleryGridEl.insertAdjacentHTML("beforeend", makeGalleryItemsSetMarkup);
 
-const styles=`
+const styles = `
 <style>
   img {
     display: block;
@@ -59,6 +60,6 @@ const styles=`
     overflow: hidden;
     border-radius: 5px;
   }  
-</style>`
-galleryGridEl.insertAdjacentHTML("beforebegin",styles);
+</style>`;
+galleryGridEl.insertAdjacentHTML("beforebegin", styles);
 console.log(galleryGridEl.style);
