@@ -24,30 +24,41 @@ const images = [
 ];
 
 const galleryGridEl = document.querySelector("ul.gallery");
-// galleryGridEl.style.backgroundColor = "teal";
-// galleryGridEl.style.padding = "15px";
-// galleryGridEl.style.display = "flex";
-// galleryGridEl.style.gap = "10px";
-// galleryGridEl.style.justifyContent = "center";
-// galleryGridEl.style.listStyle= "none";
+galleryGridEl.classList.add("list");
 
-// console.log(galleryGridEl.style);
-// console.dir(galleryGridEl);
-const makeGalleryItemMarkup = ({ url, alt }) => {
-  return `<li class="item"><img src="${url}" alt="${alt}" height="200px"></li>`;
-};
-// console.log(makeGalleryItemMarkup(images[0]));
+const makeGalleryItemMarkup = ({ url, alt }) =>`<li class="item"><img src="${url}" alt="${alt}" ></li>`;
+
 const makeGalleryItemsSetMarkup = images.map(makeGalleryItemMarkup).join("");
-// console.log(makeGalleryItemsSetMarkup);
+
 galleryGridEl.insertAdjacentHTML("beforeend",makeGalleryItemsSetMarkup);
-// const galleryGridItemEl = document.querySelector(".item");
-// galleryGridItemEl.style.width="300px";
-// galleryGridItemEl.style.overflow="hidden";
-// console.log(galleryGridItemEl.style);
-const styles=`<style>
-  body {
-    color:red;
-    background-color: teal;
+
+const styles=`
+<style>
+  img {
+    display: block;
+    // max-width: 100%;
+    // height: auto;
+    max-height: 100%
   }
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .gallery{
+    backgroundColor: teal;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  .item {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 5px;
+  }  
 </style>`
 galleryGridEl.insertAdjacentHTML("beforebegin",styles);
+console.log(galleryGridEl.style);
