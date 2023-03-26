@@ -38,9 +38,9 @@ function onBlurValidation(evt) {
   if (elem.classList.contains("valid")) {
     elem.classList.remove("valid");
   }
-
-  elem.classList.add("invalid");
-
+  if (!elem.classList.contains("invalid")) {
+    elem.classList.add("invalid");
+  }
   if (elem.value.length === Number(elem.dataset.length)) {
     elem.classList.replace("invalid", "valid");
   }
