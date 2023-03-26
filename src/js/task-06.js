@@ -1,5 +1,5 @@
 // Завдання 6
-// Напиши скрипт, який під час втрати фокусу на інпуті (подія blur), 
+// Напиши скрипт, який під час втрати фокусу на інпуті (подія blur),
 // перевіряє його вміст щодо правильної кількості введених символів.
 
 // <input
@@ -24,5 +24,24 @@
 // #validation-input.invalid {
 //   border-color: #f44336;
 // }
-const inputTextEl= document.querySelector("input#validation-input");
-inputTextEl.addEventListener("blur",onBlur);
+//
+// js
+// /
+const inputTextEl = document.querySelector("input#validation-input");
+inputTextEl.addEventListener("blur", onBlurValidation);
+console.dir(inputTextEl);
+console.log(inputTextEl.dataset.length);
+
+function onBlurValidation(evt) {
+  const elem = evt.currentTarget;
+
+  if (elem.classList.contains("valid")) {
+    elem.classList.remove("valid");
+  }
+
+  elem.classList.add("invalid");
+
+  if (elem.value.length === Number(elem.dataset.length)) {
+    elem.classList.replace("invalid", "valid");
+  }
+}
