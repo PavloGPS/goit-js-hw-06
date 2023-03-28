@@ -11,12 +11,12 @@
 
 // <div id="boxes"></div>
 
-// Створи функцію createBoxes(amount), яка приймає один параметр - число. 
+// Створи функцію createBoxes(amount), яка приймає один параметр - число.
 // Функція створює стільки <div>, скільки вказано в amount і додає їх у div#boxes.
 
 // Розміри найпершого <div> - 30px на 30px.
 // Кожен елемент після першого повинен бути ширшим і вищим від попереднього на 10px.
-// Всі елементи повинні мати випадковий колір фону у форматі HEX. 
+// Всі елементи повинні мати випадковий колір фону у форматі HEX.
 // Використовуй готову функцію getRandomHexColor для отримання кольору.
 // function getRandomHexColor() {
 //   return `#${Math.floor(Math.random() * 16777215)
@@ -30,24 +30,38 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-const createBoxesBtnEl=document.querySelector('#controls buton[data-create]');
-const destroyBoxesBtnEl=document.querySelector('#controls buton[data-destroy]');
-const inputEl=document.querySelector('#controls input');
-const boxesDivEl=document.querySelector('div#boxes');
+const createBoxesBtnEl = document.querySelector(
+  "#controls button[data-create]"
+);
+const destroyBoxesBtnEl = document.querySelector(
+  "#controls button[data-destroy]"
+);
+const inputEl = document.querySelector("#controls input");
+const boxesDivEl = document.querySelector("div#boxes");
 console.dir(inputEl);
+console.dir(createBoxesBtnEl);
+console.dir(destroyBoxesBtnEl);
 
-createBoxesBtnEl.addEventListener("click",onCreateBtnClick);
-destroyBoxesBtnEl.addEventListener("click",onDestroyBtnClick);
+createBoxesBtnEl.addEventListener("click", onCreateBtnClick);
+destroyBoxesBtnEl.addEventListener("click", onDestroyBtnClick);
 
-function onCreateBtnClick(){
-  const amount=Number(inputEl.value);
+function onCreateBtnClick() {
+  const amount = Number(inputEl.value);
   createBoxes(amount);
 }
-function createBoxes(amount){
-  boxesArr=[];
+function createBoxes(amount) {
+  const boxesArr = [];
   let boxSize = 30;
-  for (let i=0; i <amount; i++){
-    const boxEl=
+  for (let i = 0; i < amount; i++) {
+    const boxEl = document.createElement("div");
+    boxEl.style.width = `${boxSize}px`;
+    boxEl.style.height = `${boxSize}px`;
+    boxEl.style.backgroundColor = getRandomHexColor();
+    boxesArr.push(boxEl);
+    boxSize += 10;
   }
+  boxesDivEl.append(...boxesArr);
 }
-
+function onDestroyBtnClick() {
+  boxesDivEl.innerHTML = "";
+}
