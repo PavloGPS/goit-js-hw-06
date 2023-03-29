@@ -11,10 +11,13 @@ const outputEl = document.querySelector("span#name-output");
 
 inputEl.addEventListener("input", onInput);
 
+// function onInput(event) {
+//   if (event.currentTarget.value !== "") {
+//     outputEl.textContent = event.currentTarget.value;
+//   } else {
+//     outputEl.textContent = "Anonymous";
+//   }
+// }
 function onInput(event) {
-  if (event.currentTarget.value !== "") {
-    outputEl.textContent = event.currentTarget.value;
-  } else {
-    outputEl.textContent = "Anonymous";
+  outputEl.textContent = event.currentTarget.value.trim() || "Anonymous";
   }
-}
